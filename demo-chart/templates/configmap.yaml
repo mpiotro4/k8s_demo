@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: demo-api-config
+data:
+  APP_PORT: "{{ .Values.config.APP_PORT }}"
+  APP_MESSAGE: "{{ .Values.config.APP_MESSAGE }}"

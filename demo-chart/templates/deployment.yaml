@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-api
+  name: {{ .Values.appName }}
   labels:
-    app: demo-api
+    app: {{ .Values.appName }}
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: demo-api
+      app: {{ .Values.appName }}
   template:
     metadata:
       labels:
-        app: demo-api
+        app: {{ .Values.appName }}
     spec:
       containers:
-      - name: demo-api
+      - name: {{ .Values.appName }}
         image: kddny/demo_api:latest
         imagePullPolicy: Always
         ports:
@@ -33,3 +33,13 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: spec.nodeName
+          - name: APP_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: demo-api-config
+                key: APP_PORT
+          - name: APP_MESSAGE
+            valueFrom:
+              configMapKeyRef:
+                name: demo-api-config
+                key: APP_MESSAGE

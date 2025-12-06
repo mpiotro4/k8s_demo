@@ -1,0 +1,4 @@
+  appName: demo-api
+  config:
+    APP_PORT: "8080"
+    APP_MESSAGE: "Hello from ConfigMap"

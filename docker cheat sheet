@@ -1,0 +1,7 @@
+buid:
+    docker build -t kddny/demo_api:latest .
+push:
+    docker push kddny/demo_api:latest
+
+helm upgrade:
+    helm upgrade my-release-name ./demo-chart
